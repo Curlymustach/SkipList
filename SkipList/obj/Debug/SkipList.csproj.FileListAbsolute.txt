@@ -1,2 +1,9 @@
 C:\Users\Meghana Sagare\Documents\Visual Studio 2017\Projects\SkipList\SkipList\obj\Debug\SkipList.csprojAssemblyReference.cache
 C:\Users\Meghana Sagare\Documents\Visual Studio 2017\Projects\SkipList\SkipList\obj\Debug\SkipList.csproj.CoreCompileInputs.cache
+C:\Users\MeghanaSagare\Documents\Github\SkipList\SkipList\bin\Debug\SkipList.exe.config
+C:\Users\MeghanaSagare\Documents\Github\SkipList\SkipList\bin\Debug\SkipList.exe
+C:\Users\MeghanaSagare\Documents\Github\SkipList\SkipList\bin\Debug\SkipList.pdb
+C:\Users\MeghanaSagare\Documents\Github\SkipList\SkipList\obj\Debug\SkipList.csprojAssemblyReference.cache
+C:\Users\MeghanaSagare\Documents\Github\SkipList\SkipList\obj\Debug\SkipList.csproj.CoreCompileInputs.cache
+C:\Users\MeghanaSagare\Documents\Github\SkipList\SkipList\obj\Debug\SkipList.exe
+C:\Users\MeghanaSagare\Documents\Github\SkipList\SkipList\obj\Debug\SkipList.pdb

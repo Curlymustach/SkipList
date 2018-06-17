@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,15 +7,28 @@ using System.Threading.Tasks;
 
 namespace SkipList
 {
-    class SkipList<T> : ICollection<T>, IEnumerable<T>
+    public class SkipList<T> : ICollection<T>, IEnumerable<T> where T : IComparable<T>
     {
+        public int Count { get; private set; }
+        public bool IsReadOnly { get; }
+        Node<T> head;
+        int height;
 
-        public double probablity = 0.5;
-        Random rand;
+        Random rand = new Random();
 
-        public SkipList()
+        public SkipList(int randomSeed)
         {
+            
+        }
 
+        public int ChooseRandomHeight()
+        {
+            height = 1;
+            while(rand.Next(0, 2) != 0 && height < head.Height + 1)
+            {
+                height++;
+            }
+            return height;
         }
 
         public void Add(T value)
@@ -42,18 +56,14 @@ namespace SkipList
             return false;
         }
 
-        public T getEnumerator()
+        public IEnumerator<T> GetEnumerator()
         {
-            
+            return null;
         }
 
-        public int Count()
+        IEnumerator IEnumerable.GetEnumerator()
         {
-
+            return GetEnumerator();
         }
-
-        public bool isReadOnly()
-        {
-        }
-    
+    }
 }
