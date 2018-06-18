@@ -18,13 +18,14 @@ namespace SkipList
 
         public SkipList(int randomSeed)
         {
-            
+            Count = 0;
+            head = new Node<T>(1);
         }
 
-        public int ChooseRandomHeight()
+        public int ChooseRandomHeight(int maxHeight)
         {
             height = 1;
-            while(rand.Next(0, 2) != 0 && height < head.Height + 1)
+            while(rand.Next(0, 2) != 0 && height < maxHeight)
             {
                 height++;
             }
@@ -33,12 +34,41 @@ namespace SkipList
 
         public void Add(T value)
         {
+            Node<T> temp = new Node<T>(value, ChooseRandomHeight(head.Height + 1));
+            if(temp.Height > head.Height)
+            {
+                head.IncreaseHeight();
+            }
 
+            Node<T> current = head;
+            int level = head.Height - 1;
+            while(level >= 0)
+            {
+                if (current[level].Value.CompareTo(value) > 0)
+                {
+                    if(temp.Height > level)
+                    {
+                        temp[level] = current[level];
+                        current[level] = temp;
+                    }
+                    level--;
+                }
+                else if(current[level].Value.CompareTo(value) < 0)
+                {
+                    current = current[level];
+                }
+                else if(current[level].Value.CompareTo(value) == 0)
+                {
+                    return;
+                }
+            }
+
+            Count++;
         }
 
         public void Clear()
         {
-
+            head = new Node<T>(1);
         }
 
         public void CopyTo(T[] array, int index)
@@ -48,6 +78,25 @@ namespace SkipList
 
         public bool Contains(T value)
         {
+            Node<T> temp = head;
+            for(int i = Count; i >= 1; i--)
+            {
+                while(temp[i].Value != null)
+                {
+                    if(temp[i].Value.CompareTo(value) == 0)
+                    {
+                        return true;
+                    }
+                    else if(temp[i].Value.CompareTo(value) < 0)
+                    {
+                        temp = temp[i];
+                    }
+                    else if(temp[i].Value.CompareTo(value) > 0)
+                    {
+                        break;
+                    }
+                }
+            }
             return false;
         }
 
