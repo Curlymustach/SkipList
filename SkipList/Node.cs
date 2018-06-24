@@ -6,44 +6,45 @@ using System.Threading.Tasks;
 
 namespace SkipList
 {
-    public class Node<T> where T : IComparable<T>;
+    public class Node<T> where T : IComparable<T>
     {
         public T Value;
-        public Node<T>[] Nodes;
+        public Node<T>[] Neigbors;
         public int Height;
 
-        public Node<T> this [int index]
+        public Node<T> this [int level]
         {
             get
             {
-                return Nodes[index];
+                return Neigbors[level];
             }
             set
             {
-                Nodes[index] = value;
+                Neigbors[level] = value;
             }
         }
 
         public Node(T value, int height)
         {
             this.Value = value;
-            Nodes = new Node<T>[height];
-            Height = Nodes.Length;
+            Neigbors = new Node<T>[height];
+            Height = Neigbors.Length;
         }
         public Node(int height)
         {
-            Nodes = new Node<T>[height];
-            Height = Nodes.Length;
+            Neigbors = new Node<T>[height];
+            Height = Neigbors.Length;
         }
 
         public void IncreaseHeight()
         {
             Node<T>[] temp = new Node<T>[Height + 1];
-            for(int i = 0; i < Nodes.Length; i++)
+            for(int i = 0; i < Neigbors.Length; i++)
             {
-                temp[i] = Nodes[i];
+                temp[i] = Neigbors[i];
             }
-            Nodes = temp;
+            Neigbors = temp;
+            Height = Neigbors.Length;
         }
     }
 

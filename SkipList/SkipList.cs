@@ -16,7 +16,7 @@ namespace SkipList
 
         Random rand = new Random();
 
-        public SkipList(int randomSeed)
+        public SkipList()
         {
             Count = 0;
             head = new Node<T>(1);
@@ -33,7 +33,8 @@ namespace SkipList
         }
 
         public void Add(T value)
-        {
+         {
+            //create node to insert w/ random height
             Node<T> temp = new Node<T>(value, ChooseRandomHeight(head.Height + 1));
             if(temp.Height > head.Height)
             {

@@ -10,6 +10,14 @@ namespace SkipList
     {
         static void Main(string[] args)
         {
+            SkipList<int> list = new SkipList<int>();
+            for (int i = 1; i <= 5; i++)
+            {
+                list.Add(i);
+            }
+
+            Console.ReadKey();
+
         }
     }
 }

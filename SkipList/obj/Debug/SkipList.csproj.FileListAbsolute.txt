@@ -7,3 +7,10 @@ C:\Users\MeghanaSagare\Documents\Github\SkipList\SkipList\obj\Debug\SkipList.csp
 C:\Users\MeghanaSagare\Documents\Github\SkipList\SkipList\obj\Debug\SkipList.csproj.CoreCompileInputs.cache
 C:\Users\MeghanaSagare\Documents\Github\SkipList\SkipList\obj\Debug\SkipList.exe
 C:\Users\MeghanaSagare\Documents\Github\SkipList\SkipList\obj\Debug\SkipList.pdb
+C:\Users\Meghana Sagare\Documents\Github\SkipList\SkipList\bin\Debug\SkipList.exe.config
+C:\Users\Meghana Sagare\Documents\Github\SkipList\SkipList\bin\Debug\SkipList.exe
+C:\Users\Meghana Sagare\Documents\Github\SkipList\SkipList\bin\Debug\SkipList.pdb
+C:\Users\Meghana Sagare\Documents\Github\SkipList\SkipList\obj\Debug\SkipList.csprojAssemblyReference.cache
+C:\Users\Meghana Sagare\Documents\Github\SkipList\SkipList\obj\Debug\SkipList.csproj.CoreCompileInputs.cache
+C:\Users\Meghana Sagare\Documents\Github\SkipList\SkipList\obj\Debug\SkipList.exe
+C:\Users\Meghana Sagare\Documents\Github\SkipList\SkipList\obj\Debug\SkipList.pdb
