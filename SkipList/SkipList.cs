@@ -11,7 +11,9 @@ namespace SkipList
     {
         public int Count { get; private set; }
         public bool IsReadOnly { get; }
+
         Node<T> head;
+
         int height;
 
         Random rand = new Random();
@@ -25,7 +27,7 @@ namespace SkipList
         public int ChooseRandomHeight(int maxHeight)
         {
             height = 1;
-            while(rand.Next(0, 2) != 0 && height < maxHeight)
+            while (rand.Next(0, 2) != 0 && height < maxHeight)
             {
                 height++;
             }
@@ -33,35 +35,42 @@ namespace SkipList
         }
 
         public void Add(T value)
-         {
+        {
             //create node to insert w/ random height
             Node<T> temp = new Node<T>(value, ChooseRandomHeight(head.Height + 1));
-            if(temp.Height > head.Height)
+            if (temp.Height > head.Height)
             {
                 head.IncreaseHeight();
             }
 
             Node<T> current = head;
             int level = head.Height - 1;
-            while(level >= 0)
+            while (level > 0)
             {
-                if (current[level].Value.CompareTo(value) > 0)
+                //next value is GREATER then the new value: move down (treat null as infinity)
+                if (current[level] == null || current[level].Value.CompareTo(value) > 0)
                 {
-                    if(temp.Height > level)
+                    //move down
+                    level--;
+                    //link in new node
+                    if (level < temp.Height)
                     {
                         temp[level] = current[level];
                         current[level] = temp;
+
+
                     }
-                    level--;
                 }
-                else if(current[level].Value.CompareTo(value) < 0)
+                else
                 {
+                    //move right
                     current = current[level];
                 }
-                else if(current[level].Value.CompareTo(value) == 0)
-                {
-                    return;
-                }
+
+                //if greater: move down
+                //if less: move right
+                //if EQUAL: move down and link THROUGH (current[level] = current[level][level];)
+
             }
 
             Count++;
@@ -80,19 +89,19 @@ namespace SkipList
         public bool Contains(T value)
         {
             Node<T> temp = head;
-            for(int i = Count; i >= 1; i--)
+            for (int i = Count; i >= 1; i--)
             {
-                while(temp[i].Value != null)
+                while (temp[i].Value != null)
                 {
-                    if(temp[i].Value.CompareTo(value) == 0)
+                    if (temp[i].Value.CompareTo(value) == 0)
                     {
                         return true;
                     }
-                    else if(temp[i].Value.CompareTo(value) < 0)
+                    else if (temp[i].Value.CompareTo(value) < 0)
                     {
                         temp = temp[i];
                     }
-                    else if(temp[i].Value.CompareTo(value) > 0)
+                    else if (temp[i].Value.CompareTo(value) > 0)
                     {
                         break;
                     }
@@ -103,7 +112,16 @@ namespace SkipList
 
         public bool Remove(T value)
         {
-            return false;
+            Node<T> current = head;
+            int level = head.Height - 1;
+            while(level > 0)
+            {
+                if (current[level] == null || current[level].Value.CompareTo(value) > 0)
+                {
+                    level--;
+                }
+                // < =
+            }
         }
 
         public IEnumerator<T> GetEnumerator()
