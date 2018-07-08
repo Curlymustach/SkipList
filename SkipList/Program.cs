@@ -15,6 +15,7 @@ namespace SkipList
             {
                 list.Add(i);
             }
+            list.Remove(4);
 
             Console.ReadKey();
 

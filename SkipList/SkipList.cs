@@ -45,21 +45,20 @@ namespace SkipList
 
             Node<T> current = head;
             int level = head.Height - 1;
-            while (level > 0)
+            while (level >= 0)
             {
                 //next value is GREATER then the new value: move down (treat null as infinity)
                 if (current[level] == null || current[level].Value.CompareTo(value) > 0)
-                {
-                    //move down
-                    level--;
+                {                    
                     //link in new node
                     if (level < temp.Height)
                     {
                         temp[level] = current[level];
                         current[level] = temp;
 
-
                     }
+                    //move down
+                    level--;
                 }
                 else
                 {
@@ -114,15 +113,28 @@ namespace SkipList
         {
             Node<T> current = head;
             int level = head.Height - 1;
-            while(level > 0)
+            bool removed = false;
+            while(level >= 0)
             {
                 if (current[level] == null || current[level].Value.CompareTo(value) > 0)
                 {
                     level--;
                 }
-                // < =
+                else if (current[level] == null || current[level].Value.CompareTo(value) < 0)
+                {
+                    current = current[level];
+                }
+                else if(current[level].Value.CompareTo(value) == 0)
+                {
+                    removed = true;
+                    current[level] = current[level][level];
+                    level--;
+                }
             }
+            Count--;
+            return removed;
         }
+
 
         public IEnumerator<T> GetEnumerator()
         {
